@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@400;700;800;900&amp;family=Space+Grotesk:wght@700&amp;family=Spline+Sans:wght@400;700&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-container": "#ffcb09",
+                        "on-tertiary-container": "#fffbff",
+                        "surface-bright": "#fcf9f8",
+                        "on-secondary": "#ffffff",
+                        "primary-fixed-dim": "#ffb4a8",
+                        "on-primary-container": "#fffbff",
+                        "on-primary-fixed-variant": "#930100",
+                        "on-error-container": "#93000a",
+                        "on-background": "#1b1c1c",
+                        "surface-container-high": "#eae7e7",
+                        "inverse-on-surface": "#f3f0ef",
+                        "tertiary-fixed": "#dfe0ff",
+                        "secondary-fixed-dim": "#f2c000",
+                        "on-tertiary-fixed": "#000b62",
+                        "on-primary": "#ffffff",
+                        "surface-container-highest": "#e5e2e1",
+                        "on-secondary-container": "#6f5700",
+                        "tertiary-container": "#5768e6",
+                        "on-tertiary-fixed-variant": "#2335b5",
+                        "inverse-surface": "#303030",
+                        "surface": "#fcf9f8",
+                        "tertiary-fixed-dim": "#bcc2ff",
+                        "secondary": "#745b00",
+                        "on-secondary-fixed-variant": "#584400",
+                        "primary": "#bc0100",
+                        "error": "#ba1a1a",
+                        "error-container": "#ffdad6",
+                        "primary-fixed": "#ffdad4",
+                        "surface-tint": "#c00100",
+                        "outline-variant": "#ebbbb4",
+                        "inverse-primary": "#ffb4a8",
+                        "on-error": "#ffffff",
+                        "surface-container": "#f0eded",
+                        "surface-container-low": "#f6f3f2",
+                        "on-surface-variant": "#603e39",
+                        "primary-container": "#eb0000",
+                        "on-tertiary": "#ffffff",
+                        "on-secondary-fixed": "#241a00",
+                        "on-primary-fixed": "#410000",
+                        "outline": "#956d67",
+                        "on-surface": "#1b1c1c",
+                        "background": "#fcf9f8",
+                        "surface-dim": "#dcd9d9",
+                        "tertiary": "#3c4dcb",
+                        "secondary-fixed": "#ffe08d",
+                        "surface-variant": "#e5e2e1",
+                        "surface-container-lowest": "#ffffff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin": "32px",
+                        "gutter": "24px",
+                        "unit": "8px",
+                        "container-max": "1280px"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["Spline Sans"],
+                        "body-md": ["Spline Sans"],
+                        "label-bold": ["Space Grotesk"],
+                        "h2": ["Epilogue"],
+                        "h1": ["Epilogue"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                        "label-bold": ["14px", {"lineHeight": "1", "fontWeight": "700"}],
+                        "h2": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                        "h1": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "800"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .pokeball-button {
+            position: relative;
+            height: 48px;
+            width: 160px;
+            overflow: hidden;
+            border: 3px solid #1b1c1c;
+            border-radius: 9999px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s ease;
+        }
+        .pokeball-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 50%;
+            background-color: #bc0100;
+            border-bottom: 3px solid #1b1c1c;
+        }
+        .pokeball-button::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 50%;
+            background-color: #ffffff;
+        }
+        .pokeball-center {
+            position: absolute;
+            z-index: 10;
+            width: 24px;
+            height: 24px;
+            background: white;
+            border: 3px solid #1b1c1c;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .pokeball-button:hover .pokeball-center {
+            background-color: #ffcb09;
+            box-shadow: 0 0 10px #ffcb09;
+        }
+        .pokeball-button:active {
+            transform: translate(2px, 2px);
+        }
+        .hero-gradient {
+            background: linear-gradient(180deg, rgba(188,1,0,0.1) 0%, rgba(252,249,248,1) 100%);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md">
+<!-- TopNavBar -->
+<nav class="flex justify-between items-center w-full px-8 py-4 sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b-[3px] border-slate-900 shadow-[4px_4px_0px_0px_rgba(255,203,5,1)]">
+<div class="flex items-center gap-8">
+<span class="text-2xl font-black text-slate-900 italic font-['Epilogue'] tracking-tight uppercase">PokéDex Adventure</span>
+<div class="hidden md:flex items-center gap-6">
+<a class="text-slate-600 font-medium hover:text-red-500 font-['Epilogue'] tracking-tight uppercase hover:scale-105 transition-all" href="#">Explore</a>
+<a class="text-slate-600 font-medium hover:text-red-500 font-['Epilogue'] tracking-tight uppercase hover:scale-105 transition-all" href="#">Gallery</a>
+<a class="text-red-600 border-b-4 border-red-600 pb-1 font-['Epilogue'] font-bold tracking-tight uppercase" href="#">Pokédex</a>
+<a class="text-slate-600 font-medium hover:text-red-500 font-['Epilogue'] tracking-tight uppercase hover:scale-105 transition-all" href="#">Items</a>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="relative hidden lg:block">
+<input class="pl-10 pr-4 py-2 border-2 border-slate-900 rounded-lg focus:ring-2 focus:ring-tertiary outline-none" placeholder="Search Pokémon..." type="text"/>
+<span class="material-symbols-outlined absolute left-3 top-2.5 text-slate-500">search</span>
+</div>
+<button class="p-2 hover:scale-105 transition-all"><span class="material-symbols-outlined text-slate-900">notifications</span></button>
+<button class="p-2 hover:scale-105 transition-all"><span class="material-symbols-outlined text-slate-900">person</span></button>
+</div>
+</nav>
+<main class="max-w-[1280px] mx-auto px-margin py-unit">
+<!-- Hero Section -->
+<section class="grid grid-cols-1 lg:grid-cols-2 gap-12 py-12 items-center">
+<div class="relative order-2 lg:order-1">
+<div class="absolute -top-10 -left-10 w-32 h-32 bg-secondary-container rounded-full opacity-20 blur-3xl"></div>
+<h2 class="font-label-bold text-label-bold text-tertiary mb-2">#0006</h2>
+<h1 class="font-h1 text-h1 text-on-background mb-4 uppercase">Charizard</h1>
+<div class="flex gap-4 mb-8">
+<span class="px-6 py-2 bg-primary text-white font-label-bold text-label-bold rounded-full border-2 border-slate-900 shadow-[4px_4px_0px_0px_rgba(27,28,28,1)] uppercase">Fire</span>
+<span class="px-6 py-2 bg-tertiary-container text-white font-label-bold text-label-bold rounded-full border-2 border-slate-900 shadow-[4px_4px_0px_0px_rgba(27,28,28,1)] uppercase">Flying</span>
+</div>
+<p class="font-body-lg text-body-lg text-on-surface-variant mb-8 max-w-md">
+                    It spits fire that is hot enough to melt boulders. It may cause forest fires by blowing flames.
+                </p>
+<div class="flex gap-6">
+<button class="pokeball-button">
+<span class="pokeball-center"></span>
+<span class="relative z-20 text-on-background font-label-bold ml-8">ADD TO TEAM</span>
+</button>
+<button class="flex items-center gap-2 font-label-bold text-slate-900 hover:text-primary transition-colors">
+<span class="material-symbols-outlined">share</span>
+                        SHARE TRAINER CARD
+                    </button>
+</div>
+</div>
+<div class="order-1 lg:order-2 flex justify-center relative">
+<div class="w-full aspect-square rounded-[2rem] border-4 border-slate-900 bg-white shadow-[12px_12px_0px_0px_rgba(188,1,0,1)] overflow-hidden flex items-center justify-center p-8 group">
+<img alt="Charizard" class="w-full h-full object-contain group-hover:scale-110 transition-transform duration-500" data-alt="Epic cinematic rendering of a majestic orange dragon breathing fire in a volcanic cavern with glowing embers and smoke" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB_Sql31HLmByFdiJZrh8b8HSE4PmEOPjLF1f48zQYffgg9wqtyASfMskibHiAdlT6F--GnV2y7r_hEAgHCqZ_hRhZEkZCsOXJdzTepISc-8_L82BdKBZ9G_7h5TUskjGPB3DdSRanpTkJzJP4iaMq0OjqtnpSaSBkJMOmbSr8J61H3W0QMep1H3dITmzHJAofC7aTeVEu8z2kHw8SDJZE3kYcrwmgnig8Pds0mzigFmf_SVL5Bjf3C5gbea40XfXUsVLL_Ntg6HU6r"/>
+</div>
+<!-- Floating Decorative Chips -->
+<div class="absolute -bottom-4 -right-4 bg-secondary-container border-2 border-slate-900 p-4 rounded-xl shadow-[4px_4px_0px_0px_rgba(27,28,28,1)]">
+<span class="font-label-bold text-slate-900">WEIGHT: 90.5 KG</span>
+</div>
+<div class="absolute -top-4 -left-4 bg-tertiary border-2 border-slate-900 p-4 rounded-xl shadow-[4px_4px_0px_0px_rgba(27,28,28,1)] text-white">
+<span class="font-label-bold">HEIGHT: 1.7 M</span>
+</div>
+</div>
+</section>
+<!-- Stats Bento Grid -->
+<section class="py-20">
+<h2 class="font-h2 text-h2 mb-12 flex items-center gap-4">
+<span class="w-12 h-1 bg-primary"></span>
+                BASE STATISTICS
+            </h2>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<!-- Stat Card: HP -->
+<div class="bg-white border-2 border-slate-900 p-8 rounded-xl shadow-[6px_6px_0px_0px_rgba(255,203,5,1)] hover:scale-[1.02] transition-transform">
+<div class="flex justify-between items-end mb-4">
+<span class="font-label-bold text-slate-500 uppercase">Health Points</span>
+<span class="text-3xl font-black text-slate-900">78</span>
+</div>
+<div class="h-6 bg-slate-100 border-2 border-slate-900 rounded-full overflow-hidden">
+<div class="h-full bg-green-500 w-[78%]" style="box-shadow: inset 0 2px 4px rgba(0,0,0,0.1)"></div>
+</div>
+</div>
+<!-- Stat Card: Attack -->
+<div class="bg-white border-2 border-slate-900 p-8 rounded-xl shadow-[6px_6px_0px_0px_rgba(255,203,5,1)] hover:scale-[1.02] transition-transform">
+<div class="flex justify-between items-end mb-4">
+<span class="font-label-bold text-slate-500 uppercase">Attack Power</span>
+<span class="text-3xl font-black text-slate-900">84</span>
+</div>
+<div class="h-6 bg-slate-100 border-2 border-slate-900 rounded-full overflow-hidden">
+<div class="h-full bg-red-500 w-[84%]" style="box-shadow: inset 0 2px 4px rgba(0,0,0,0.1)"></div>
+</div>
+</div>
+<!-- Stat Card: Speed -->
+<div class="bg-white border-2 border-slate-900 p-8 rounded-xl shadow-[6px_6px_0px_0px_rgba(255,203,5,1)] hover:scale-[1.02] transition-transform">
+<div class="flex justify-between items-end mb-4">
+<span class="font-label-bold text-slate-500 uppercase">Speed</span>
+<span class="text-3xl font-black text-slate-900">100</span>
+</div>
+<div class="h-6 bg-slate-100 border-2 border-slate-900 rounded-full overflow-hidden">
+<div class="h-full bg-blue-500 w-full" style="box-shadow: inset 0 2px 4px rgba(0,0,0,0.1)"></div>
+</div>
+</div>
+</div>
+</section>
+<!-- Evolutions & Moves Layout -->
+<section class="grid grid-cols-1 lg:grid-cols-5 gap-12 py-20">
+<!-- Evolutions (Left 2 Columns) -->
+<div class="lg:col-span-2 space-y-8">
+<h2 class="font-h2 text-h2 mb-8">EVOLUTIONS</h2>
+<div class="space-y-6">
+<!-- Charmander -->
+<div class="flex items-center gap-6 p-4 bg-surface-container rounded-2xl border-2 border-slate-900 hover:shadow-[4px_4px_0px_0px_rgba(27,28,28,1)] transition-all cursor-pointer">
+<div class="w-20 h-20 bg-white border-2 border-slate-900 rounded-xl overflow-hidden p-2">
+<img alt="Charmander" class="w-full h-full object-contain" data-alt="Small cute orange lizard pokemon with a flame on its tail sitting in a grassy field" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDuzze7A4ST18-hays3FEfO3HL3uRP8lgXpQT9auW_BhVAAp0Xz7-rCyi9tsZrLNbVQXzPmRY14n__9ExQLME3zZDPQ4-NTSc2kzuukQUDAhTeN2wzpxcr4y7Z8jiOgEUlB99GuZHwTwv6xp95wvaCoFogNyYiHzjzcI9tbPZNIX9LL0e2k_wak10s_YD8lIKIxOxC0vgZXpXbHbGKM5PjYzMch9isSIEEjemo0cZhZEKqTVGRUEHM1InRQP6G9Zv8ZNLHWOOVSrvWr"/>
+</div>
+<div>
+<p class="font-label-bold text-slate-500">Lv. 1</p>
+<h3 class="font-h2 text-xl">CHARMANDER</h3>
+</div>
+<span class="material-symbols-outlined ml-auto text-slate-400">chevron_right</span>
+</div>
+<!-- Charmeleon -->
+<div class="flex items-center gap-6 p-4 bg-surface-container rounded-2xl border-2 border-slate-900 hover:shadow-[4px_4px_0px_0px_rgba(27,28,28,1)] transition-all cursor-pointer">
+<div class="w-20 h-20 bg-white border-2 border-slate-900 rounded-xl overflow-hidden p-2">
+<img alt="Charmeleon" class="w-full h-full object-contain" data-alt="A fierce red lizard pokemon with sharp claws and a flaming tail in a desert environment" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBMYp5BGX6WiZsRbtkfqPtTRMpYN5hz_wiXduTnaYv97uJwawAcWZXrelvgLLbCuMAAKTo7Yglshf3Ze2ewOqnjibZt0WRHOcyu3wqjaomXQ6O5y0DeX_YgRWbfCouJiOebOX3k-09UqQo1xNTzVPAygjnmU-U0Qtnd3fsQpM_PhfNEA4qD2dkOrYa00gaNWRcajsDU5Q9lWj_yU5D0vnG8hV8GOpRLRGtwm7VMJmjWWSfbAjmsw3SWOGYtjwGn_71n_OkGlLaiD_vx"/>
+</div>
+<div>
+<p class="font-label-bold text-slate-500">Lv. 16</p>
+<h3 class="font-h2 text-xl">CHARMELEON</h3>
+</div>
+<span class="material-symbols-outlined ml-auto text-slate-400">chevron_right</span>
+</div>
+<!-- Charizard -->
+<div class="flex items-center gap-6 p-4 bg-primary-fixed border-4 border-slate-900 rounded-2xl shadow-[4px_4px_0px_0px_rgba(27,28,28,1)] transition-all cursor-pointer">
+<div class="w-20 h-20 bg-white border-2 border-slate-900 rounded-xl overflow-hidden p-2">
+<img alt="Charizard" class="w-full h-full object-contain" data-alt="Powerful orange dragon with blue wing membranes roaring in a volcano" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDu0pWFAiuWgc28kjNItD73nS5mE7tRGE2CT03gTG04xDCYBuhGr_iSiQ4sTiuxYMXH6kCG2anR69EXidG0_aIVJX59XPviIg61cV34mrSpBR7SIx3Us5gj69x6cVJhuBKAJ0AatDAamMA9MEQvKv6Vok7xTgG4GBUz-T50qSb2-6j7MeSPIS_5soqo5Dz3Wj8YAK_UflSovGKUnwEfabnFHV_KaEKvGoS340wagdARCNmLixfIM82DlR_tlg_2Dd-AW877JQ3dvp_b"/>
+</div>
+<div>
+<p class="font-label-bold text-on-primary-fixed">Lv. 36</p>
+<h3 class="font-h2 text-xl text-on-primary-fixed">CHARIZARD</h3>
+</div>
+<span class="material-symbols-outlined ml-auto text-on-primary-fixed" data-weight="fill">check_circle</span>
+</div>
+</div>
+</div>
+<!-- Moves (Right 3 Columns) -->
+<div class="lg:col-span-3">
+<h2 class="font-h2 text-h2 mb-8">SIGNATURE MOVES</h2>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+<div class="p-6 bg-white border-2 border-slate-900 rounded-xl hover:translate-x-1 hover:-translate-y-1 hover:shadow-[6px_6px_0px_0px_rgba(188,1,0,1)] transition-all">
+<div class="flex justify-between items-start mb-4">
+<h4 class="font-h2 text-lg uppercase">FLAMETHROWER</h4>
+<span class="px-3 py-1 bg-primary text-white text-xs font-black rounded-full uppercase">Fire</span>
+</div>
+<div class="flex gap-4 text-sm font-label-bold text-slate-600 mb-2">
+<span>PWR: 90</span>
+<span>ACC: 100%</span>
+</div>
+<p class="text-sm text-slate-500">The target is scorched with an intense blast of fire. This may also leave the target with a burn.</p>
+</div>
+<div class="p-6 bg-white border-2 border-slate-900 rounded-xl hover:translate-x-1 hover:-translate-y-1 hover:shadow-[6px_6px_0px_0px_rgba(188,1,0,1)] transition-all">
+<div class="flex justify-between items-start mb-4">
+<h4 class="font-h2 text-lg uppercase">DRAGON CLAW</h4>
+<span class="px-3 py-1 bg-tertiary text-white text-xs font-black rounded-full uppercase">Dragon</span>
+</div>
+<div class="flex gap-4 text-sm font-label-bold text-slate-600 mb-2">
+<span>PWR: 80</span>
+<span>ACC: 100%</span>
+</div>
+<p class="text-sm text-slate-500">The user slashes the target with huge, sharp claws. It does not have any secondary effect.</p>
+</div>
+<div class="p-6 bg-white border-2 border-slate-900 rounded-xl hover:translate-x-1 hover:-translate-y-1 hover:shadow-[6px_6px_0px_0px_rgba(188,1,0,1)] transition-all">
+<div class="flex justify-between items-start mb-4">
+<h4 class="font-h2 text-lg uppercase">AIR SLASH</h4>
+<span class="px-3 py-1 bg-tertiary-container text-white text-xs font-black rounded-full uppercase">Flying</span>
+</div>
+<div class="flex gap-4 text-sm font-label-bold text-slate-600 mb-2">
+<span>PWR: 75</span>
+<span>ACC: 95%</span>
+</div>
+<p class="text-sm text-slate-500">The user attacks with a blade of air that slices even the sky. This may also make the target flinch.</p>
+</div>
+<div class="p-6 bg-white border-2 border-slate-900 rounded-xl hover:translate-x-1 hover:-translate-y-1 hover:shadow-[6px_6px_0px_0px_rgba(188,1,0,1)] transition-all">
+<div class="flex justify-between items-start mb-4">
+<h4 class="font-h2 text-lg uppercase">FIRE SPIN</h4>
+<span class="px-3 py-1 bg-primary text-white text-xs font-black rounded-full uppercase">Fire</span>
+</div>
+<div class="flex gap-4 text-sm font-label-bold text-slate-600 mb-2">
+<span>PWR: 35</span>
+<span>ACC: 85%</span>
+</div>
+<p class="text-sm text-slate-500">The user traps the target inside a fierce vortex of fire that inflicts damage for four to five turns.</p>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="flex flex-col md:flex-row justify-between items-center px-12 py-10 w-full mt-20 gap-6 bg-slate-900 border-t-[4px] border-red-600">
+<div class="flex flex-col items-center md:items-start gap-4">
+<span class="text-xl font-black text-white font-['Epilogue'] tracking-wide">© 2024 PokéDex Adventure. All rights reserved.</span>
+<div class="flex gap-4">
+<a class="text-slate-400 hover:text-white transition-colors font-['Epilogue'] text-sm tracking-wide" href="#">Privacy Policy</a>
+<a class="text-slate-400 hover:text-white transition-colors font-['Epilogue'] text-sm tracking-wide" href="#">Terms of Service</a>
+<a class="text-slate-400 hover:text-white transition-colors font-['Epilogue'] text-sm tracking-wide" href="#">Contact Support</a>
+<a class="text-slate-400 hover:text-white transition-colors font-['Epilogue'] text-sm tracking-wide" href="#">Trainer Guidelines</a>
+</div>
+</div>
+<div class="flex gap-6">
+<span class="material-symbols-outlined text-yellow-400 cursor-pointer hover:scale-110 transition-all">sports_esports</span>
+<span class="material-symbols-outlined text-yellow-400 cursor-pointer hover:scale-110 transition-all">explore</span>
+<span class="material-symbols-outlined text-yellow-400 cursor-pointer hover:scale-110 transition-all">share</span>
+</div>
+</footer>
+</body></html>

@@ -1,0 +1,6 @@
+{
+  "name": "PokéDex Adventure",
+  "description": "An interactive Pokédex scanner, global Pokémon gallery, species encyclopedia, and trainer bag built with the Vibrant Adventure System.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

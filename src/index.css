@@ -1,0 +1,117 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #bc0100;
+  --color-primary-container: #eb0000;
+  --color-primary-fixed: #ffdad4;
+  --color-on-primary-fixed: #410000;
+  --color-secondary-container: #ffcb09;
+  --color-on-secondary-container: #6f5700;
+  --color-tertiary: #3c4dcb;
+  --color-tertiary-container: #5768e6;
+  --color-on-tertiary-container: #fffbff;
+  --color-surface: #fcf9f8;
+  --color-background: #fcf9f8;
+  --color-on-background: #1b1c1c;
+  --color-on-surface: #1b1c1c;
+  --color-on-surface-variant: #603e39;
+  --color-surface-container: #f0eded;
+  --color-surface-container-low: #f6f3f2;
+  --color-surface-container-high: #eae7e7;
+
+  --font-display: "Epilogue", system-ui, sans-serif;
+  --font-body: "Spline Sans", system-ui, sans-serif;
+  --font-label: "Space Grotesk", system-ui, sans-serif;
+}
+
+@layer base {
+  body {
+    font-family: var(--font-body);
+    background-color: #fcf9f8;
+    color: #1b1c1c;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+  }
+}
+
+.font-display {
+  font-family: var(--font-display);
+}
+
+.font-body {
+  font-family: var(--font-body);
+}
+
+.font-label {
+  font-family: var(--font-label);
+}
+
+.hard-shadow-sm {
+  box-shadow: 4px 4px 0px 0px #1b1c1c;
+}
+
+.hard-shadow {
+  box-shadow: 6px 6px 0px 0px #1b1c1c;
+}
+
+.hard-shadow-lg {
+  box-shadow: 8px 8px 0px 0px #1b1c1c;
+}
+
+.hard-shadow-red {
+  box-shadow: 12px 12px 0px 0px #bc0100;
+}
+
+.hard-shadow-yellow {
+  box-shadow: 6px 6px 0px 0px #ffcb09;
+}
+
+.adventure-chip {
+  transform: skewX(-12deg);
+}
+
+.adventure-chip > span {
+  display: inline-block;
+  transform: skewX(12deg);
+}
+
+@keyframes scanline-sweep {
+  0% {
+    transform: translateY(0%);
+  }
+  50% {
+    transform: translateY(220px);
+  }
+  100% {
+    transform: translateY(0%);
+  }
+}
+
+.animate-scanline {
+  animation: scanline-sweep 3.2s ease-in-out infinite;
+}
+
+@keyframes float-slow {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.animate-float-slow {
+  animation: float-slow 5s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-scanline,
+  .animate-float-slow,
+  .animate-bounce,
+  .animate-pulse {
+    animation: none !important;
+  }
+}

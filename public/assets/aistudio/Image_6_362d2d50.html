@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@400;700;800;900&amp;family=Space+Grotesk:wght@700&amp;family=Spline+Sans:wght@400;700&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "secondary-container": "#ffcb09",
+                    "on-tertiary-container": "#fffbff",
+                    "surface-bright": "#fcf9f8",
+                    "on-secondary": "#ffffff",
+                    "primary-fixed-dim": "#ffb4a8",
+                    "on-primary-container": "#fffbff",
+                    "on-primary-fixed-variant": "#930100",
+                    "on-error-container": "#93000a",
+                    "on-background": "#1b1c1c",
+                    "surface-container-high": "#eae7e7",
+                    "inverse-on-surface": "#f3f0ef",
+                    "tertiary-fixed": "#dfe0ff",
+                    "secondary-fixed-dim": "#f2c000",
+                    "on-tertiary-fixed": "#000b62",
+                    "on-primary": "#ffffff",
+                    "surface-container-highest": "#e5e2e1",
+                    "on-secondary-container": "#6f5700",
+                    "tertiary-container": "#5768e6",
+                    "on-tertiary-fixed-variant": "#2335b5",
+                    "inverse-surface": "#303030",
+                    "surface": "#fcf9f8",
+                    "tertiary-fixed-dim": "#bcc2ff",
+                    "secondary": "#745b00",
+                    "on-secondary-fixed-variant": "#584400",
+                    "primary": "#bc0100",
+                    "error": "#ba1a1a",
+                    "error-container": "#ffdad6",
+                    "primary-fixed": "#ffdad4",
+                    "surface-tint": "#c00100",
+                    "outline-variant": "#ebbbb4",
+                    "inverse-primary": "#ffb4a8",
+                    "on-error": "#ffffff",
+                    "surface-container": "#f0eded",
+                    "surface-container-low": "#f6f3f2",
+                    "on-surface-variant": "#603e39",
+                    "primary-container": "#eb0000",
+                    "on-tertiary": "#ffffff",
+                    "on-secondary-fixed": "#241a00",
+                    "on-primary-fixed": "#410000",
+                    "outline": "#956d67",
+                    "on-surface": "#1b1c1c",
+                    "background": "#fcf9f8",
+                    "surface-dim": "#dcd9d9",
+                    "tertiary": "#3c4dcb",
+                    "secondary-fixed": "#ffe08d",
+                    "surface-variant": "#e5e2e1",
+                    "surface-container-lowest": "#ffffff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "margin": "32px",
+                    "gutter": "24px",
+                    "unit": "8px",
+                    "container-max": "1280px"
+            },
+            "fontFamily": {
+                    "body-lg": ["Spline Sans"],
+                    "body-md": ["Spline Sans"],
+                    "label-bold": ["Space Grotesk"],
+                    "h2": ["Epilogue"],
+                    "h1": ["Epilogue"]
+            },
+            "fontSize": {
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "label-bold": ["14px", {"lineHeight": "1", "fontWeight": "700"}],
+                    "h2": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                    "h1": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "800"}]
+            }
+          }
+        }
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .poke-card-hover:hover {
+            transform: scale(1.02);
+            box-shadow: 6px 6px 0px 0px #ffcb09;
+        }
+        .adventure-chip {
+            clip-path: polygon(10% 0, 100% 0, 90% 100%, 0 100%);
+        }
+        .pokeball-btn {
+            position: relative;
+            overflow: hidden;
+            border: 3px solid #1b1c1c;
+        }
+        .pokeball-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 50%;
+            background-color: #bc0100;
+            border-bottom: 3px solid #1b1c1c;
+            z-index: 0;
+        }
+        .pokeball-btn::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 50%;
+            background-color: #ffffff;
+            z-index: 0;
+        }
+        .pokeball-btn-content {
+            position: relative;
+            z-index: 10;
+        }
+        .pokeball-center-icon {
+            background: white;
+            border: 3px solid #1b1c1c;
+            border-radius: 50%;
+            padding: 4px;
+        }
+        .pokeball-btn:hover .pokeball-center-icon {
+            background: #ffcb09;
+            box-shadow: 0 0 15px #ffcb09;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md overflow-x-hidden">
+<!-- TopNavBar -->
+<header class="flex justify-between items-center w-full px-8 py-4 sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b-[3px] border-slate-900 shadow-[4px_4px_0px_0px_rgba(255,203,5,1)]">
+<div class="flex items-center gap-4">
+<span class="text-2xl font-black text-slate-900 italic font-['Epilogue'] tracking-tight uppercase">PokéDex Adventure</span>
+</div>
+<nav class="hidden md:flex items-center gap-8 font-['Epilogue'] font-bold tracking-tight uppercase">
+<a class="text-slate-600 font-medium hover:text-red-500 hover:scale-105 hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] transition-all active:translate-x-[2px] active:translate-y-[2px] active:shadow-none" href="#">Explore</a>
+<a class="text-red-600 border-b-4 border-red-600 pb-1 hover:scale-105 hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] transition-all active:translate-x-[2px] active:translate-y-[2px] active:shadow-none" href="#">Gallery</a>
+<a class="text-slate-600 font-medium hover:text-red-500 hover:scale-105 hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] transition-all active:translate-x-[2px] active:translate-y-[2px] active:shadow-none" href="#">Pokédex</a>
+<a class="text-slate-600 font-medium hover:text-red-500 hover:scale-105 hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] transition-all active:translate-x-[2px] active:translate-y-[2px] active:shadow-none" href="#">Items</a>
+</nav>
+<div class="flex items-center gap-4">
+<div class="hidden lg:flex items-center bg-surface-container rounded-lg px-4 py-2 border-2 border-slate-900">
+<span class="material-symbols-outlined text-slate-600" data-icon="search">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-sm font-label-bold px-2" placeholder="Search Pokémon..." type="text"/>
+</div>
+<button class="material-symbols-outlined text-red-600 hover:scale-110 transition-transform" data-icon="notifications">notifications</button>
+<button class="material-symbols-outlined text-red-600 hover:scale-110 transition-transform" data-icon="person">person</button>
+</div>
+</header>
+<main class="max-w-[1280px] mx-auto px-margin py-20">
+<!-- Hero Section -->
+<section class="mb-24 text-center">
+<h1 class="font-h1 text-h1 text-primary mb-6 uppercase tracking-tighter">Pokémon Global Gallery</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto">Discover the rarest and most powerful species from across all regions. A curated collection for the ultimate trainer.</p>
+</section>
+<!-- Filters / Sort -->
+<div class="flex flex-wrap justify-between items-end gap-gutter mb-12 border-b-2 border-slate-200 pb-8">
+<div class="flex gap-4">
+<div class="bg-secondary-container text-on-secondary-container px-6 py-2 font-label-bold adventure-chip border-2 border-slate-900">All Types</div>
+<div class="bg-white hover:bg-tertiary hover:text-white transition-colors px-6 py-2 font-label-bold adventure-chip border-2 border-slate-900 cursor-pointer">Legendary</div>
+<div class="bg-white hover:bg-tertiary hover:text-white transition-colors px-6 py-2 font-label-bold adventure-chip border-2 border-slate-900 cursor-pointer">Mega Evolved</div>
+</div>
+<div class="flex items-center gap-4">
+<span class="font-label-bold uppercase text-slate-500">Sort By:</span>
+<select class="border-2 border-slate-900 px-4 py-2 font-label-bold rounded-none focus:ring-2 focus:ring-tertiary">
+<option>Number #</option>
+<option>Name A-Z</option>
+<option>Power Level</option>
+</select>
+</div>
+</div>
+<!-- Gallery Grid -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-gutter">
+<!-- Card 1 -->
+<div class="bg-white border-2 border-slate-900 p-4 transition-all duration-300 poke-card-hover group">
+<div class="relative bg-slate-100 mb-4 overflow-hidden rounded-lg aspect-square flex items-center justify-center">
+<img alt="Charizard" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="a detailed 3D rendering of an orange fire dragon Pokémon in a heroic pose with glowing fiery wings and embers" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDtXCnK8ECBWgrNh1p8yovvZmP6oVEGg9aU23bYkyBnr55Z5G2a7sgKbMBjTRQarZGx0A_pBltWTMq4qcbw6a8vVKTN62iIyo99eM1XLx6Xo84Se30GQ8FqlpL1E6zOUVqtGKLxWIXI22Y-0ob9V-51sgUnxTzaByILOOEpQ6mLDaKY6qtUkI2YBSFKDIhQzS6fydd1zJOSMtJxbVf2mkoR_FENEg3liN8Zx-hmws6VUoI4nEGv-JQHdbfqFcGXsMaGS3cyaI0pYYlL"/>
+<div class="absolute top-2 right-2 bg-slate-900 text-white font-label-bold px-2 py-1 text-xs">#0006</div>
+</div>
+<div class="flex justify-between items-start mb-4">
+<div>
+<h3 class="font-h2 text-xl uppercase font-black text-slate-900">Charizard</h3>
+<div class="flex gap-2 mt-1">
+<span class="text-[10px] font-black uppercase px-2 py-0.5 bg-red-500 text-white rounded">Fire</span>
+<span class="text-[10px] font-black uppercase px-2 py-0.5 bg-slate-400 text-white rounded">Flying</span>
+</div>
+</div>
+</div>
+<button class="w-full py-3 pokeball-btn transition-transform active:scale-95">
+<div class="pokeball-btn-content flex items-center justify-center gap-3">
+<span class="font-label-bold text-white uppercase tracking-wider drop-shadow-md">View Details</span>
+<div class="pokeball-center-icon flex items-center justify-center">
+<span class="material-symbols-outlined text-xs font-black text-slate-900" data-icon="adjust">adjust</span>
+</div>
+</div>
+</button>
+</div>
+<!-- Card 2 -->
+<div class="bg-white border-2 border-slate-900 p-4 transition-all duration-300 poke-card-hover group">
+<div class="relative bg-slate-100 mb-4 overflow-hidden rounded-lg aspect-square flex items-center justify-center">
+<img alt="Lucario" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="a majestic blue and black aura Pokémon standing in a dynamic fighting stance with blue energy swirling around its paws" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBOUQqdSjWLbhBmnnFFaxSKaP2cO5vSJaxu8Ks0RbEUBy_S0PARFp6Iv3xBRTjnSGrDTleD0_Afb2wOTKoxMGkFhI4uqVHDDao7EJGyNz38QDVMFFdKW5IIbGMCKQZ91Iz3a_RdRCkY2oGZ5HtEA_lzpb7cpEIp53mTjNu7PIjQc4E8QJI5wq88dTIqfRcgRkWJ1P5Uf90_z2honFjvFhUanuutrSPy5qWSeL_CDhjJ8CfByke3Y-oMd4FDhhO8Fnzp112sjz-tGnFK"/>
+<div class="absolute top-2 right-2 bg-slate-900 text-white font-label-bold px-2 py-1 text-xs">#0448</div>
+</div>
+<div class="flex justify-between items-start mb-4">
+<div>
+<h3 class="font-h2 text-xl uppercase font-black text-slate-900">Lucario</h3>
+<div class="flex gap-2 mt-1">
+<span class="text-[10px] font-black uppercase px-2 py-0.5 bg-blue-800 text-white rounded">Fighting</span>
+<span class="text-[10px] font-black uppercase px-2 py-0.5 bg-zinc-400 text-white rounded">Steel</span>
+</div>
+</div>
+</div>
+<button class="w-full py-3 pokeball-btn transition-transform active:scale-95">
+<div class="pokeball-btn-content flex items-center justify-center gap-3">
+<span class="font-label-bold text-white uppercase tracking-wider drop-shadow-md">View Details</span>
+<div class="pokeball-center-icon flex items-center justify-center">
+<span class="material-symbols-outlined text-xs font-black text-slate-900" data-icon="adjust">adjust</span>
+</div>
+</div>
+</button>
+</div>
+<!-- Card 3 -->
+<div class="bg-white border-2 border-slate-900 p-4 transition-all duration-300 poke-card-hover group">
+<div class="relative bg-slate-100 mb-4 overflow-hidden rounded-lg aspect-square flex items-center justify-center">
+<img alt="Rayquaza" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="long serpentine green legendary dragon Pokémon flying through high altitude clouds with glowing yellow patterns on its body" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBFTJJiQlwyU79BkMXOAxNDA2CrTmGBDyQbLOKGZc013EGqJ2l1XNdBuE3yjJ1AGnVlvT7OS49xhzsrl48BxrTUn9G9y4gUovSn6K0G5qRX2vW73aUB9g5CuK-qh-Z8IVXmnrpf3FU52HXubL7cuDM55hRrkxfG7G35D9qIdWt0O14e_nnAQ31X37nHheA26M8kKBL1CMxLjSbVUr9IEJtcd795_3ZDcTSJdGhLNdT2v7IsKJkYqxyFff81MXw17N6a-Pwj8lBnNRZ6"/>
+<div class="absolute top-2 right-2 bg-slate-900 text-white font-label-bold px-2 py-1 text-xs">#0384</div>
+</div>
+<div class="flex justify-between items-start mb-4">
+<div>
+<h3 class="font-h2 text-xl uppercase font-black text-slate-900">Rayquaza</h3>
+<div class="flex gap-2 mt-1">
+<span class="text-[10px] font-black uppercase px-2 py-0.5 bg-emerald-700 text-white rounded">Dragon</span>
+<span class="text-[10px] font-black uppercase px-2 py-0.5 bg-slate-400 text-white rounded">Flying</span>
+</div>
+</div>
+</div>
+<button class="w-full py-3 pokeball-btn transition-transform active:scale-95">
+<div class="pokeball-btn-content flex items-center justify-center gap-3">
+<span class="font-label-bold text-white uppercase tracking-wider drop-shadow-md">View Details</span>
+<div class="pokeball-center-icon flex items-center justify-center">
+<span class="material-symbols-outlined text-xs font-black text-slate-900" data-icon="adjust">adjust</span>
+</div>
+</div>
+</button>
+</div>
+<!-- Card 4 -->
+<div class="bg-white border-2 border-slate-900 p-4 transition-all duration-300 poke-card-hover group">
+<div class="relative bg-slate-100 mb-4 overflow-hidden rounded-lg aspect-square flex items-center justify-center">
+<img alt="Gengar" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="shadowy purple ghost Pokémon with a sinister wide grin and glowing red eyes in a dark misty environment" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDa1Jc4-GFWMXalTiHu06Ig61UD3qqGGfv3L7VVeSWj3MxnVOru5chPhrV6Mh6cS060cEHghMYOZmdGpEVEMF8fLlxcJGpeIPkAvKy1gCtqd7tpXg00CfyEbzmDgsQycROtCfn52Qfz1vifY4_jvMbMccKsFl2WYLS0y_ird5SNlKmratHkotDb6N0229EH_puyiPQ6LqIrs3q-uPQo8qrXuVs_7dbOh_RcIQa2h0r91U_6d1HKRPTkxSqTRQ0gT0pB5yHgSHIjlkfv"/>
+<div class="absolute top-2 right-2 bg-slate-900 text-white font-label-bold px-2 py-1 text-xs">#0094</div>
+</div>
+<div class="flex justify-between items-start mb-4">
+<div>
+<h3 class="font-h2 text-xl uppercase font-black text-slate-900">Gengar</h3>
+<div class="flex gap-2 mt-1">
+<span class="text-[10px] font-black uppercase px-2 py-0.5 bg-purple-700 text-white rounded">Ghost</span>
+<span class="text-[10px] font-black uppercase px-2 py-0.5 bg-fuchsia-900 text-white rounded">Poison</span>
+</div>
+</div>
+</div>
+<button class="w-full py-3 pokeball-btn transition-transform active:scale-95">
+<div class="pokeball-btn-content flex items-center justify-center gap-3">
+<span class="font-label-bold text-white uppercase tracking-wider drop-shadow-md">View Details</span>
+<div class="pokeball-center-icon flex items-center justify-center">
+<span class="material-symbols-outlined text-xs font-black text-slate-900" data-icon="adjust">adjust</span>
+</div>
+</div>
+</button>
+</div>
+<!-- Card 5 -->
+<div class="bg-white border-2 border-slate-900 p-4 transition-all duration-300 poke-card-hover group">
+<div class="relative bg-slate-100 mb-4 overflow-hidden rounded-lg aspect-square flex items-center justify-center">
+<img alt="Sylveon" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="cute pink and white fairy Pokémon with ribbon-like feelers and large blue eyes in a bright sunlit meadow" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAlIVYpt5sxGmKJvnSPYXyjNYEfco6z6o3y64ZVku-uLNB4r6Pm6jZHPDQaWCMfohTUK1cvmFsSZBCCop_7hqafzypjWpVwe1HyLT9n3V4kDIoJ9Tmoqk6fLy0TYz3C6S49-IMAjmG_4oxbY0T7fu2FcnKurgAbPh0ZI3OdBZp0WhZJZGMd9R2d5QEh1-7zyWbSkitfYRr7_0iuo_vH0LTtkU0K2c7PuWHKZG3xU62-UbqW1rMRWFDSNe-j7cV7d_wzGItel2MJYa7d"/>
+<div class="absolute top-2 right-2 bg-slate-900 text-white font-label-bold px-2 py-1 text-xs">#0700</div>
+</div>
+<div class="flex justify-between items-start mb-4">
+<div>
+<h3 class="font-h2 text-xl uppercase font-black text-slate-900">Sylveon</h3>
+<div class="flex gap-2 mt-1">
+<span class="text-[10px] font-black uppercase px-2 py-0.5 bg-pink-400 text-white rounded">Fairy</span>
+</div>
+</div>
+</div>
+<button class="w-full py-3 pokeball-btn transition-transform active:scale-95">
+<div class="pokeball-btn-content flex items-center justify-center gap-3">
+<span class="font-label-bold text-white uppercase tracking-wider drop-shadow-md">View Details</span>
+<div class="pokeball-center-icon flex items-center justify-center">
+<span class="material-symbols-outlined text-xs font-black text-slate-900" data-icon="adjust">adjust</span>
+</div>
+</div>
+</button>
+</div>
+<!-- Card 6 -->
+<div class="bg-white border-2 border-slate-900 p-4 transition-all duration-300 poke-card-hover group">
+<div class="relative bg-slate-100 mb-4 overflow-hidden rounded-lg aspect-square flex items-center justify-center">
+<img alt="Blastoise" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="large blue turtle Pokémon with two water cannons protruding from its shell, standing on a rocky beach" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDPLVU5IG8sOcJf8dXJ8QkdcFqm0vsd1G6vCWj2lMBR_RxTqt372hRviKQ1xCAV-2PgxYKFrVNtMQzet-AgKHOx_rRM2VNzad3uYBWtWTqVwNqiZ_x_X-z0HmqaUz3nh9Sm0FjQZHH9oydid-YzW-x0_DbKdLW2g9jxWsKtP-ZTF8c4n6eoum7pro_Z-wKbA0DbXChC51zFXDPGFvTdtj30Ldsxrk6syzIdjpWNFOB2vFQpWzNOk059HmGTKDCX2xKdQUZpjLn6kJEI"/>
+<div class="absolute top-2 right-2 bg-slate-900 text-white font-label-bold px-2 py-1 text-xs">#0009</div>
+</div>
+<div class="flex justify-between items-start mb-4">
+<div>
+<h3 class="font-h2 text-xl uppercase font-black text-slate-900">Blastoise</h3>
+<div class="flex gap-2 mt-1">
+<span class="text-[10px] font-black uppercase px-2 py-0.5 bg-blue-500 text-white rounded">Water</span>
+</div>
+</div>
+</div>
+<button class="w-full py-3 pokeball-btn transition-transform active:scale-95">
+<div class="pokeball-btn-content flex items-center justify-center gap-3">
+<span class="font-label-bold text-white uppercase tracking-wider drop-shadow-md">View Details</span>
+<div class="pokeball-center-icon flex items-center justify-center">
+<span class="material-symbols-outlined text-xs font-black text-slate-900" data-icon="adjust">adjust</span>
+</div>
+</div>
+</button>
+</div>
+<!-- Card 7 -->
+<div class="bg-white border-2 border-slate-900 p-4 transition-all duration-300 poke-card-hover group">
+<div class="relative bg-slate-100 mb-4 overflow-hidden rounded-lg aspect-square flex items-center justify-center">
+<img alt="Mewtwo" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="sleek purple and grey psychic legendary Pokémon floating in a high-tech laboratory with neon blue lights" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBybBRDgTNZmfmogcmQLdN0zmD7YuAPM-mqVn_bzA-NkJ6w_1f_B3_ZMP7oVkfTa0rXrAUy6NrT6cd_9U44C9D46rxD5G8eYz5u_lYknKDOylHh_JbEl0yYNO_dsv2eiymRZUDcxpPU4cUF4a4Lx9iltwLYkkOKgRM2EWw8sI7Foj8BWTmTVXTK1R5IF3MoK5Bfuj0bxRNsWcNsf3R0i0GhJbWM2ETZ425NBEsdHjzRmlTNVmG5LFEBmeMn4oGefQi7CffhARdq2-A6"/>
+<div class="absolute top-2 right-2 bg-slate-900 text-white font-label-bold px-2 py-1 text-xs">#0150</div>
+</div>
+<div class="flex justify-between items-start mb-4">
+<div>
+<h3 class="font-h2 text-xl uppercase font-black text-slate-900">Mewtwo</h3>
+<div class="flex gap-2 mt-1">
+<span class="text-[10px] font-black uppercase px-2 py-0.5 bg-pink-600 text-white rounded">Psychic</span>
+</div>
+</div>
+</div>
+<button class="w-full py-3 pokeball-btn transition-transform active:scale-95">
+<div class="pokeball-btn-content flex items-center justify-center gap-3">
+<span class="font-label-bold text-white uppercase tracking-wider drop-shadow-md">View Details</span>
+<div class="pokeball-center-icon flex items-center justify-center">
+<span class="material-symbols-outlined text-xs font-black text-slate-900" data-icon="adjust">adjust</span>
+</div>
+</div>
+</button>
+</div>
+<!-- Card 8 -->
+<div class="bg-white border-2 border-slate-900 p-4 transition-all duration-300 poke-card-hover group">
+<div class="relative bg-slate-100 mb-4 overflow-hidden rounded-lg aspect-square flex items-center justify-center">
+<img alt="Pikachu" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="iconic yellow electric mouse Pokémon with red cheeks releasing sparks of electricity in a playful pose" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD6SAovreBtrV0vg5dWjaAT5zihT_WhbtIVtsZjPVi59mquDyPen0rpgTZb_3wQ8vkdqtBT_UNLZPv9F89zdUhF8rvNvR3Ff5nd_GAwleLjgCBK3HxO-pDDUvP3bvvNs71MEEpyb2vZeMPZoSPKm9OqK1D7uIlxVwIFSkoAERds3NatbSarUH6M4TgACuHWM7NxhHMaI-JMU9btFc-sy22dDR8dlfoH6LKy_hubFjYMoK7JpmODiRKcRJtCsCC_qkOeMXuIfs9z3wFD"/>
+<div class="absolute top-2 right-2 bg-slate-900 text-white font-label-bold px-2 py-1 text-xs">#0025</div>
+</div>
+<div class="flex justify-between items-start mb-4">
+<div>
+<h3 class="font-h2 text-xl uppercase font-black text-slate-900">Pikachu</h3>
+<div class="flex gap-2 mt-1">
+<span class="text-[10px] font-black uppercase px-2 py-0.5 bg-yellow-400 text-slate-900 rounded">Electric</span>
+</div>
+</div>
+</div>
+<button class="w-full py-3 pokeball-btn transition-transform active:scale-95">
+<div class="pokeball-btn-content flex items-center justify-center gap-3">
+<span class="font-label-bold text-white uppercase tracking-wider drop-shadow-md">View Details</span>
+<div class="pokeball-center-icon flex items-center justify-center">
+<span class="material-symbols-outlined text-xs font-black text-slate-900" data-icon="adjust">adjust</span>
+</div>
+</div>
+</button>
+</div>
+</div>
+<!-- Pagination / Load More -->
+<div class="mt-20 flex justify-center">
+<button class="group flex items-center gap-4 bg-slate-900 text-white px-10 py-5 font-h2 uppercase tracking-widest border-4 border-slate-900 hover:bg-white hover:text-slate-900 transition-all duration-300 active:translate-y-1">
+                Load More Species
+                <span class="material-symbols-outlined group-hover:translate-y-1 transition-transform" data-icon="keyboard_double_arrow_down">keyboard_double_arrow_down</span>
+</button>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-slate-900 dark:bg-black w-full border-t-[4px] border-red-600 flex flex-col md:flex-row justify-between items-center px-12 py-10 mt-20 gap-6">
+<div class="flex flex-col gap-2">
+<span class="text-xl font-black text-white font-['Epilogue']">PokéDex Adventure</span>
+<p class="text-slate-400 font-['Epilogue'] text-sm tracking-wide">© 2024 PokéDex Adventure. All rights reserved.</p>
+</div>
+<div class="flex flex-wrap justify-center gap-8">
+<a class="text-slate-400 font-['Epilogue'] text-sm tracking-wide hover:text-white transition-colors" href="#">Privacy Policy</a>
+<a class="text-slate-400 font-['Epilogue'] text-sm tracking-wide hover:text-white transition-colors" href="#">Terms of Service</a>
+<a class="text-slate-400 font-['Epilogue'] text-sm tracking-wide hover:text-white transition-colors" href="#">Contact Support</a>
+<a class="text-slate-400 font-['Epilogue'] text-sm tracking-wide hover:text-white transition-colors" href="#">Trainer Guidelines</a>
+</div>
+<div class="flex gap-4">
+<div class="w-10 h-10 rounded-full border-2 border-slate-700 flex items-center justify-center text-yellow-400 hover:bg-yellow-400 hover:text-slate-900 transition-all cursor-pointer">
+<span class="material-symbols-outlined text-xl" data-icon="share">share</span>
+</div>
+<div class="w-10 h-10 rounded-full border-2 border-slate-700 flex items-center justify-center text-yellow-400 hover:bg-yellow-400 hover:text-slate-900 transition-all cursor-pointer">
+<span class="material-symbols-outlined text-xl" data-icon="star">star</span>
+</div>
+</div>
+</footer>
+<!-- FAB for quick scroll to top -->
+<button class="fixed bottom-8 right-8 w-16 h-16 bg-red-600 text-white rounded-full border-4 border-slate-900 shadow-[6px_6px_0px_0px_rgba(27,28,28,1)] flex items-center justify-center z-40 hover:-translate-y-2 active:translate-y-1 transition-all">
+<span class="material-symbols-outlined text-3xl font-black" data-icon="arrow_upward">arrow_upward</span>
+</button>
+</body></html>
